@@ -1,0 +1,20 @@
+<section class="reviews-section">
+  <h2>Што велат клиентите</h2>
+
+  <div class="reviews-wrapper">
+    <div
+      class="reviews-track"
+      [style.width.%]="reviews.length * 100"
+      [style.transform]="'translateX(-' + currentIndex * (100 / reviews.length) + '%)'"
+    >
+      @for (review of reviews; track review.name) {
+        <div class="review-slide" [style.width.%]="100 / reviews.length">
+          <div class="review-card">
+            <p>{{ review.text }}</p>
+            <h4>{{ review.name }}</h4>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

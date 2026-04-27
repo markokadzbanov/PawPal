@@ -1,0 +1,172 @@
+<div class="prestoj-container">
+  <div class="hero">
+    <span class="badge">Сместување</span>
+    <h1>Пакети за престој</h1>
+    <p>Изберете пакет кој одговара на потребите на вашето милениче</p>
+  </div>
+
+  <div class="packages">
+    <div class="card" [class.selected]="selectedPackage === 'Basic - 1.200 ден/ноќ'">
+      <h2>Basic</h2>
+      <div class="price">1.200 <span>ден/ноќ</span></div>
+      <ul>
+        <li>Заедничка соба (до 4 кучиња)</li>
+        <li>3 оброци дневно</li>
+        <li>2 пати прошетка во дворот</li>
+        <li>Основно следење</li>
+      </ul>
+      <button
+        type="button"
+        [class.btn-primary]="selectedPackage === 'Basic - 1.200 ден/ноќ'"
+        [class.btn-outline]="selectedPackage !== 'Basic - 1.200 ден/ноќ'"
+        (click)="selectPackage('Basic - 1.200 ден/ноќ')"
+      >
+        Изберете
+      </button>
+    </div>
+
+    <div class="card featured" [class.selected]="selectedPackage === 'Comfort - 2.100 ден/ноќ'">
+      <div class="badge-popular">✦ Најпопуларен</div>
+      <h2>Comfort</h2>
+      <div class="price">2.100 <span>ден/ноќ</span></div>
+      <ul>
+        <li>Приватна соба со кревет</li>
+        <li>Индивидуална исхрана</li>
+        <li>4 пати прошетка низ двор и игра</li>
+        <li>Дневен фото извештај</li>
+        <li>Вет преглед по доаѓање</li>
+      </ul>
+      <button
+        type="button"
+        [class.btn-primary]="selectedPackage === 'Comfort - 2.100 ден/ноќ'"
+        [class.btn-outline]="selectedPackage !== 'Comfort - 2.100 ден/ноќ'"
+        (click)="selectPackage('Comfort - 2.100 ден/ноќ')"
+      >
+        Изберете
+      </button>
+    </div>
+
+    <div class="card" [class.selected]="selectedPackage === 'Luxury - 3.500 ден/ноќ'">
+      <h2>Luxury</h2>
+      <div class="price">3.500 <span>ден/ноќ</span></div>
+      <ul>
+        <li>Suite со TV и играчки</li>
+        <li>Прилагоден мени</li>
+        <li>Неограничени шетњи</li>
+        <li>Видео повици со сопственикот</li>
+        <li>Груминг вклучен</li>
+      </ul>
+      <button
+        type="button"
+        [class.btn-primary]="selectedPackage === 'Luxury - 3.500 ден/ноќ'"
+        [class.btn-outline]="selectedPackage !== 'Luxury - 3.500 ден/ноќ'"
+        (click)="selectPackage('Luxury - 3.500 ден/ноќ')"
+      >
+        Изберете
+      </button>
+    </div>
+  </div>
+
+  @if (isLoadingRegistration) {
+    <div class="rezervacija">
+      <h2>Вчитување</h2>
+      <p>Се вчитуваат податоците од регистрацијата...</p>
+    </div>
+  } @else if (registrationData) {
+    <div class="rezervacija">
+      <h2>Потврда за престој</h2>
+
+      <div class="summary-box">
+        <p><strong>Регистрација ID:</strong> {{ registrationId }}</p>
+
+        <p>
+          <strong>Милениче:</strong>
+          {{ registrationData?.petInfo?.name || registrationData?.petName || '-' }}
+        </p>
+
+        <p>
+          <strong>Раса:</strong>
+          {{ registrationData?.petInfo?.breed || registrationData?.breed || '-' }}
+        </p>
+
+        <p>
+          <strong>Пристигнување:</strong>
+          {{ registrationData?.stayInfo?.checkInDateTime || registrationData?.arrivalDate || '-' }}
+        </p>
+
+        <p>
+          <strong>Заминување:</strong>
+          {{
+            registrationData?.stayInfo?.checkOutDateTime || registrationData?.departureDate || '-'
+          }}
+        </p>
+
+        <p>
+          <strong>Избран пакет:</strong>
+          {{ selectedPackage }}
+        </p>
+      </div>
+
+      <button
+        class="btn-primary full-btn"
+        type="button"
+        [disabled]="isSubmitting || !selectedPackage"
+        (click)="submitReservation()"
+      >
+        {{ isSubmitting ? 'Се испраќа...' : 'Потврди пакет за престој' }}
+      </button>
+
+      @if (showPaymentChoice) {
+        <div class="payment-choice-box">
+          <p>Резервацијата е успешно креирана. Дали сакате да продолжите со плаќање?</p>
+
+          <div class="payment-actions">
+            <button
+              class="btn-primary"
+              type="button"
+              (click)="proceedToPayment()"
+              [disabled]="isCreatingPayment"
+            >
+              {{ isCreatingPayment ? 'Се подготвува плаќање...' : 'Продолжи кон плаќање' }}
+            </button>
+
+            <button
+              class="btn-outline"
+              type="button"
+              (click)="cancelPayment()"
+              [disabled]="isCreatingPayment"
+            >
+              Откажи
+            </button>
+          </div>
+        </div>
+      }
+
+      @if (clientSecret) {
+        <div class="payment-choice-box">
+          <p>Внеси податоци за плаќање подолу.</p>
+
+          <div id="payment-element"></div>
+
+          <button
+            class="btn-primary full-btn"
+            type="button"
+            (click)="confirmPayment()"
+            [disabled]="isConfirmingPayment"
+          >
+            {{ isConfirmingPayment ? 'Се потврдува плаќање...' : 'Плати сега' }}
+          </button>
+
+          @if (paymentMessage) {
+            <p>{{ paymentMessage }}</p>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="rezervacija">
+      <h2>Нема податоци</h2>
+      <p>Не може да се вчита регистрацијата. Вратете се и пополнете го формуларот повторно.</p>
+    </div>
+  }
+</div>

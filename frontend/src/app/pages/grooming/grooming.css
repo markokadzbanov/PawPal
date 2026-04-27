@@ -1,0 +1,471 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap');
+
+.grooming-hero {
+  background-image: url('/assets/day-care-2.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 600px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 60px;
+  position: relative;
+  margin-top: -94px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.6) 0%,
+      rgba(0, 0, 0, 0.1) 60%,
+      transparent 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 0 60px;
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      border-left: 5px solid #B8976A;
+      padding-left: 20px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
+    }
+  }
+}
+
+.grooming-why {
+  padding: 80px 40px;
+  background-color: #EDE8DC;
+  text-align: center;
+
+  h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin-bottom: 24px;
+    font-family: 'Playfair Display', Georgia, serif;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: #B8976A;
+      margin: 12px auto 0;
+      border-radius: 2px;
+    }
+  }
+
+  .paragraf {
+    max-width: 750px;
+    margin: 0 auto;
+
+    p {
+      font-size: 1rem;
+      color: #5C5245;
+      line-height: 1.85;
+      margin-bottom: 16px;
+      font-family: 'Montserrat', sans-serif;
+    }
+  }
+}
+
+.grooming-steps {
+  padding: 60px 40px;
+  background: #F5F0E8;
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin-bottom: 8px;
+    font-family: 'Playfair Display', Georgia, serif;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 2px;
+      background: #B8976A;
+      margin-top: 10px;
+      border-radius: 2px;
+    }
+  }
+
+  .tabs-subtitle {
+    font-size: 0.9rem;
+    color: #5C5245;
+    margin-bottom: 28px;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid #D4C9B5;
+    margin-bottom: 32px;
+    width: 100%;
+
+    button {
+      flex: 1;
+      padding: 16px 0;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #B0A898;
+      cursor: pointer;
+      transition: all 0.2s;
+      border-radius: 0;
+      text-align: center;
+      letter-spacing: 0.08em;
+      font-family: 'Montserrat', sans-serif;
+
+      &.active {
+        color: #B8976A;
+        border-bottom-color: #B8976A;
+      }
+
+      &:hover:not(.active) {
+        color: #1B2A4A;
+      }
+    }
+  }
+
+  .tab-content {
+    border-radius: 4px;
+    overflow: hidden;
+
+    .tab-body {
+      background-size: cover;
+      background-position: center top;
+      min-height: 550px;
+      width: 100%;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.75) 0%,
+          rgba(0, 0, 0, 0.2) 60%,
+          transparent 100%
+        );
+      }
+    }
+
+    .tab-text {
+      position: relative;
+      z-index: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+
+      h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: white;
+        margin: 0;
+        font-family: 'Playfair Display', Georgia, serif;
+      }
+
+      .duration {
+        padding: 6px 14px;
+        background: rgba(184,151,106,0.3);
+        color: white;
+        font-size: 13px;
+        font-weight: 600;
+        border-radius: 30px;
+        backdrop-filter: blur(4px);
+        border: 1px solid rgba(184,151,106,0.5);
+        font-family: 'Montserrat', sans-serif;
+        letter-spacing: 0.05em;
+      }
+
+      p {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.85;
+        max-width: 600px;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+      }
+    }
+  }
+}
+.grooming-spa {
+  background: #EDE8DC;
+  padding: 80px 0 0;
+
+  .spa-header {
+    text-align: center;
+    padding: 0 40px;
+    margin-bottom: 48px;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1B2A4A;
+      font-family: 'Playfair Display', Georgia, serif;
+
+      &::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 2px;
+        background: #B8976A;
+        margin: 12px auto 0;
+      }
+    }
+  }
+
+  .spa-eyebrow {
+    display: inline-block;
+    color: #B8976A;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+    border-left: 2px solid #B8976A;
+    padding-left: 10px;
+    margin-bottom: 12px;
+  }
+
+  .spa-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    min-height: 480px;
+  }
+
+  .spa-col-img {
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  .spa-col-text {
+    background: #FDFAF5;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 3px solid #B8976A;
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1B2A4A;
+      font-family: 'Playfair Display', Georgia, serif;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      color: #5C5245;
+      line-height: 1.9;
+      font-family: 'Montserrat', sans-serif;
+    }
+  }
+
+  .spa-col-dark {
+    background: #1B2A4A;
+    padding: 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 3px solid #B8976A;
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+      font-family: 'Playfair Display', Georgia, serif;
+      margin-bottom: 16px;
+    }
+
+    p {
+      font-size: 14px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.9;
+      font-family: 'Montserrat', sans-serif;
+    }
+  }
+
+  .spa-gold-line {
+    width: 32px;
+    height: 2px;
+    background: #B8976A;
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .grooming-spa .spa-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .grooming-spa .spa-col-img {
+    height: 280px;
+  }
+}
+.grooming-faq {
+  padding: 80px 60px;
+  background: #F5F0E8;
+  text-align: center;
+
+  h2 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1B2A4A;
+    margin-bottom: 48px;
+    font-family: 'Playfair Display', Georgia, serif;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 2px;
+      background: #B8976A;
+      margin: 14px auto 0;
+    }
+  }
+
+  .faq-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: left;
+    align-items: start;
+  }
+
+  .faq-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .faq-item {
+    background: #FDFAF5;
+    border-radius: 4px;
+    padding: 24px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    border: 1.5px solid #D4C9B5;
+    border-top: 3px solid #D4C9B5;
+    width: 100%;
+    box-sizing: border-box;
+
+    &:hover {
+      border-color: #B8976A;
+      border-top-color: #B8976A;
+    }
+
+    &.open {
+      border-color: #B8976A;
+      border-top-color: #B8976A;
+      background: #FDFAF5;
+
+      .faq-icon {
+        background: #1B2A4A;
+        color: white;
+      }
+    }
+  }
+
+  .faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    span:first-child {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #1B2A4A;
+      line-height: 1.4;
+      font-family: 'Montserrat', sans-serif;
+      flex: 1;
+    }
+  }
+
+  .faq-icon {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    border-radius: 4px;
+    background: rgba(184,151,106,0.1);
+    color: #B8976A;
+    font-size: 1.4rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s;
+  }
+
+  .faq-answer {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #D4C9B5;
+
+    p {
+      font-size: 0.9rem;
+      color: #5C5245;
+      line-height: 1.75;
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .grooming-faq {
+    padding: 60px 16px;
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 32px;
+    }
+
+    .faq-list {
+      grid-template-columns: 1fr;
+    }
+
+    .faq-col {
+      width: 100%;
+    }
+
+    .faq-item {
+      padding: 20px;
+    }
+
+    .faq-question span:first-child {
+      font-size: 0.9rem;
+    }
+  }
+}

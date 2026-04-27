@@ -1,0 +1,30 @@
+.reviews-section {
+  text-align: center;
+  background: linear-gradient(135deg, #f8f5f0, #efe7dc);
+  padding: 60px 20px;
+}
+
+.reviews-wrapper {
+  width: 320px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.reviews-track {
+  display: flex;
+  transition: transform 0.6s ease-in-out;
+}
+
+.review-slide {
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+.review-card {
+  width: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+}

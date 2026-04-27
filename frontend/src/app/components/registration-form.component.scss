@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;500;600&display=swap');
+
+// ── Tokens ────────────────────────────────────
+$navy:        #1B2A4A;
+$gold:        #B8976A;
+$gold-light:  rgba(184,151,106,0.12);
+$gold-border: rgba(184,151,106,0.5);
+$cream:       #F5F0E8;
+$cream-card:  #FDFAF5;
+$border:      #D4C9B5;
+$border-mid:  #EDE8DC;
+$text:        #1B2A4A;
+$text-muted:  #5C5245;
+$error:       #8B2020;
+$error-bg:    #FEF5F4;
+$transition:  0.2s ease;
+
+// ── Page ──────────────────────────────────────
+.reg-page {
+  min-height: 100vh;
+  background: $cream;
+  padding: 3rem 1.5rem 5rem;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+// ── Header ────────────────────────────────────
+.form-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  h1 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: $navy;
+    margin: 0 0 6px;
+    line-height: 1.25;
+  }
+
+  .header-sub {
+    font-size: 13px;
+    color: $text-muted;
+    margin: 0;
+    letter-spacing: 0.03em;
+  }
+}
+
+// ── Step card ─────────────────────────────────
+.step-card {
+  background: $cream-card;
+  border: 1px solid $border;
+  border-top: 3px solid $gold;
+  border-radius: 4px;
+  padding: 2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 12px rgba(27,42,74,0.06);
+  animation: fadeSlide 0.25s ease both;
+
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+.step-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.75rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border-mid;
+
+  h2 {
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: $navy;
+    margin: 0;
+  }
+}
+
+.step-badge {
+  font-size: 10px;
+  font-weight: 600;
+  color: $gold;
+  background: transparent;
+  padding: 4px 12px;
+  border-radius: 2px;
+  border: 1px solid $gold-border;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+// ── Section label ─────────────────────────────
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: $gold;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Montserrat', sans-serif;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 14px;
+    background: $gold;
+    border-radius: 2px;
+  }
+}
+
+.divider {
+  height: 1px;
+  background: $border-mid;
+  margin: 1.5rem 0;
+}
+
+// ── Grid ──────────────────────────────────────
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+
+  @media (max-width: 560px) { grid-template-columns: 1fr; }
+}
+
+// ── Field ─────────────────────────────────────
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1.1rem;
+
+  label {
+    font-size: 11px;
+    font-weight: 600;
+    color: $navy;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+
+    .req { color: $gold; margin-left: 2px; }
+  }
+
+  input, select, textarea {
+    width: 100%;
+    padding: 10px 14px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    color: $text;
+    background: white;
+    border: 1px solid $border;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color $transition, box-shadow $transition;
+    appearance: none;
+    box-sizing: border-box;
+
+    &::placeholder { color: #C0BAB0; }
+    &:hover { border-color: $gold-border; }
+    &:focus {
+      border-color: $gold;
+      box-shadow: 0 0 0 3px rgba(184,151,106,0.15);
+    }
+  }
+
+  textarea { resize: vertical; min-height: 80px; }
+
+  select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23B8976A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+    cursor: pointer;
+  }
+}
+
+.err {
+  font-size: 11px;
+  color: $error;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Montserrat', sans-serif;
+
+  &::before {
+    content: '!';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: $error;
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+}
+
+// ── Radio cards ───────────────────────────────
+.radio-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.radio-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid $border;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  color: $text-muted;
+  background: white;
+  transition: all $transition;
+  font-family: 'Montserrat', sans-serif;
+
+  input[type="radio"] {
+    width: 14px;
+    height: 14px;
+    accent-color: $gold;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  &:has(input:checked) {
+    border-color: $gold;
+    background: $gold-light;
+    color: $navy;
+  }
+
+  &:hover:not(:has(input:checked)) {
+    border-color: $gold-border;
+    background: #FAF7F2;
+  }
+}
+
+// ── Terms ─────────────────────────────────────
+.terms-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid $gold-border;
+  background: $gold-light;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  color: $navy;
+  font-weight: 500;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+
+  input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: $gold;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  a {
+    color: $gold;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid $gold-border;
+  }
+
+  &.error {
+    border-color: $error;
+    background: $error-bg;
+    color: $error;
+  }
+}
+
+// ── Actions ───────────────────────────────────
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 0 0;
+}
+
+.step-counter {
+  font-size: 11px;
+  color: $text-muted;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'Montserrat', sans-serif;
+}
+
+// ── Buttons ───────────────────────────────────
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: $navy;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 12px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  &:hover:not(:disabled) {
+    background: $gold;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(184,151,106,0.35);
+  }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  color: $gold;
+  border: 1.5px solid $gold-border;
+  border-radius: 4px;
+  padding: 12px 22px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all $transition;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+
+  &:hover:not(:disabled) {
+    background: $gold;
+    color: white;
+    border-color: $gold;
+  }
+  &:disabled { opacity: 0.35; cursor: default; }
+}
+
+// ── Spinner ───────────────────────────────────
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+// ── Result card ───────────────────────────────
+.result-card {
+  max-width: 480px;
+  margin: 5rem auto;
+  background: $cream-card;
+  border-radius: 4px;
+  border: 1px solid $border;
+  border-top: 3px solid $gold;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  box-shadow: 0 4px 24px rgba(27,42,74,0.08);
+
+  .result-icon { margin-bottom: 1.5rem; }
+
+  h2 {
+    font-size: 1.6rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    color: $navy;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 13px;
+    color: $text-muted;
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+}
+
+.result-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+.info-notice {
+ background: rgba(184, 151, 106, 0.1);
+  border: 1px solid rgba(184, 151, 106, 0.4);
+  border-left: 3px solid $gold;
+  border-radius: 0;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.notice-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(184,151,106,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.info-notice p {
+  font-size: 13px;
+  color: $text-muted;
+  margin: 0;
+  line-height: 1.6;
+
+  strong { color: $navy; }
+}
+// ── Responsive ────────────────────────────────
+@media (max-width: 560px) {
+  .reg-page { padding: 2rem 1rem 4rem; }
+  .step-card { padding: 1.5rem; }
+  .result-card { padding: 2rem 1.5rem; margin: 3rem auto; }
+  .form-actions { flex-wrap: wrap; gap: 0.75rem; }
+  .result-actions { flex-direction: column; align-items: stretch; }
+}
