@@ -1,0 +1,53 @@
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: pawpal-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pawpal
+      MYSQL_USER: pawpaluser
+      MYSQL_PASSWORD: pawpalpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - pawpal-network
+
+  backend:
+    build: ./backend
+    container_name: pawpal-backend
+    restart: always
+    environment:
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: pawpaluser
+      DB_PASSWORD: pawpalpassword
+      DB_NAME: pawpal
+      PORT: 3000
+      STRIPE_SECRET_KEY: sk_test_dummy1234567890abcdefghijklmnopqrstuvwxyz
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - pawpal-network
+
+  frontend:
+    build: ./frontend
+    container_name: pawpal-frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - pawpal-network
+
+volumes:
+  mysql_data:
+
+networks:
+  pawpal-network:
+    driver: bridge
