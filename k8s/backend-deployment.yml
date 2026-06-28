@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pawpal-backend
+  namespace: pawpal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pawpal-backend
+  template:
+    metadata:
+      labels:
+        app: pawpal-backend
+    spec:
+      containers:
+        - name: pawpal-backend
+          image: markokadzbanov/pawpal-backend:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: DB_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: pawpal-config
+                  key: DB_HOST
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: pawpal-config
+                  key: DB_PORT
+            - name: DB_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: pawpal-config
+                  key: DB_NAME
+            - name: DB_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: pawpal-config
+                  key: DB_USER
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pawpal-secret
+                  key: DB_PASSWORD
+            - name: STRIPE_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: pawpal-secret
+                  key: STRIPE_SECRET_KEY
+            - name: PORT
+              value: "3000"

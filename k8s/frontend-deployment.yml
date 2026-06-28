@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pawpal-frontend
+  namespace: pawpal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pawpal-frontend
+  template:
+    metadata:
+      labels:
+        app: pawpal-frontend
+    spec:
+      containers:
+        - name: pawpal-frontend
+          image: markokadzbanov/pawpal-frontend:latest
+          ports:
+            - containerPort: 80
